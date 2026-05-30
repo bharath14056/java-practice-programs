@@ -1,0 +1,453 @@
+Exception:
+
+> What is Exception?
+  > Exception is an unwanted event that occurs during the execution of the program.
+  > It happens becuase of some abnormal statement.
+  > For this the normal flow of a program execution will be errupted.
+  > Exception happens suddenly.
+  > eg: Going to attend a class   santanu sir batch,suddenly rain came.
+  >     Suddenly powercut happen.
+   
+> Diagram for the Exception Hiearachy:
+                                Object
+                                   │
+                                   │
+                             Throwable
+                    ______________________________
+                   │                              │
+                   │                              │
+               Exception                        Error
+                   │                              │
+      ___________________________        _______________________
+     │            │            │         │          │           │
+     │            │            │         │          │           │
+ Runtime      IO Exception  Interrupted  VM Error  Assertion  Linkage
+ Exception                    Exception                Error     Error
+(Unchecked)                                     
+     │              │                            │              │
+     │              │                            │              │
+     │       File Not Found Exception     ____________      Verify Error
+     │                                   │            │
+     │                            Stack Overflow   Out Of Memory
+     │                                  Error          Error
+     │
+ _________________________________________________
+│            │             │            │         │
+│            │             │            │         │
+Arithmetic  Null Pointer  Class Cast  Index Out  Illegal
+Exception   Exception     Exception   Of Bound   Argument
+                                       Exception  Exception
+                                           │           |______
+                                  __________________          │
+                                 │                  │         │
+                                 │                  │         │
+                           Array Index Out    String Index   Number Format
+                           Of Bound Exception Out Of Bound   Exception
+                                                Exception
+
+    Types of Exception :
+    1.Unchecked Exception.
+    2.Checked Exception.
+
+> 1.Unchecked Exception:
+
+   > The Exception,compiler is not aware of or compiler does not know about the Exception is called as unchecked Exception.
+   > Unchecked Exception is compile time sucess but run time error.
+   > Example1:
+   >     public class Example1 {
+    public static void main(String[] args) {
+        System.out.println("Start");
+        System.out.println(10+5);
+        System.out.println(5*6);
+        System.out.println(7/0);
+        System.out.println(8-9);
+        System.out.println("Bye");
+        
+         }
+    
+      }
+      //output:
+      Start
+      15
+      30
+      Exception in thread "main" java.lang.ArithmeticException: / by zero
+        at Example1.main(Example1.java:6) 
+
+   Note: for the abnormal statement sop(a/b),it occurs Exception and it will stop the normal exceution flow.
+
+   > Example 2:
+          class Example2{
+            public static void main(String args[])
+            {
+                int a[]={16,24,44,12};
+
+                System.out.println(a[0]);
+                System.out.println(a[1]);
+                System.out.println(a[2]);
+                System.out.println(a[3]);
+                System.out.println(a[4]);
+
+            }
+          }
+
+    Note: This is "java.lang.ArrayIndexOutofBoundsException".
+
+
+
+    > Example 3:
+            class Example3{
+                public static void main (String args[])
+                {
+                    String s1=null;
+                    class Example2{
+            
+
+                System.out.println(s1.touppercase());
+                
+                
+            }
+          }
+        }
+
+       Note: This is "java.lang.NullPointerException".
+
+
+
+
+    > Example 4:
+               class A{
+                 void hello()
+                 {
+                    System.out.println("Hello");
+                 }
+               }
+               class B(){
+                void hii(){
+                System.out.println();
+                }
+               }
+               class Example4{
+                public static void main (String args[])
+                {
+                    
+                 B ob=(B) new A();
+                
+            }
+          }
+        }
+
+    Note:  This is "java.lang.ClassCastException". 
+
+1. Checked Exception:
+        > Exception that is known by compiler is called as checked Exception.
+
+
+> Exception Handling:
+  
+     > When we are writing any abnormal statement in our program,it will generate one "Throwable typpe object" 
+     > After that immediately it won't stop the execution,it will search for any reference variable who can store the object.
+     > Now Programmer task is to handel the Exception by storing the throwable type of object.
+     > For that we need try and catch block.
+
+     eg:
+         class trycatch {
+    public static void main(String[] args) {
+        int a=20,b=0;
+
+        System.out.println("start"); //excute
+       
+
+        try {
+              System.out.println(a+b); //excute
+              System.out.println(a-b);//not excute
+              System.out.println(a/b);
+        }    catch (ArithmeticException e) {
+            System.out.println(" Exception handeled");
+        }
+        
+        System.out.println("End");
+
+        }
+        } 
+
+We can write multiple try block and multiple catch block:
+
+Example:
+   class handled {
+    public static void main(String[] args) {
+        System.out.println("Start");
+         int arr[]={2,8,7,5,4};
+         String s=null;
+         try{
+         System.out.println(30/0);//first abnormal statement
+        }
+        catch(ArithmeticException e)
+        {
+            System.out.println("Exception 1 is handeled");
+        }
+        try{
+
+            System.out.println(s.toLowerCase());//second abnormal statementh
+        }
+        catch(NullPointerException e){
+            System.out.println("Exception 2 is handeled");
+        }
+        try {
+            System.out.println(arr[7]);
+            
+        } catch (ArrayIndexOutOfBoundsException e) {
+        
+        System.out.println("Exception 3 handeled");}
+         System.out.println("end");
+    }
+
+}
+/*Output
+PS C:\Users\Bharath.S\Desktop\Java Projects\Exception-Handling> java handled.java
+Start
+Exception 1 is handeled
+Exception 2 is handeled
+Exception 3 handeled
+end*/ 
+
+              > Try block with multiple catch:
+                
+                   > Syntax:
+                   
+                        try{
+                            //
+                        }
+                        catch(){}
+                        catch(){}
+                        catch(){}
+                          .                 
+                          .
+                          .
+                        catch(){}
+
+    Example: 
+     class trycatch {
+    public static void main(String[] args) {
+        int a=20,b=0;
+
+        System.out.println("start");
+        System.out.println(a+b);
+
+        try {
+            System.out.println(a/b);
+        } catch (ArithmeticException e) {
+            System.out.println("Your I have handeled");
+        }
+        System.out.println(a-b);
+        System.out.println(a+b);
+        System.out.println("End");
+
+    }
+}
+/*output:
+PS C:\Users\Bharath.S\Desktop\Java Projects\Exception-Handling> java trycatch.java
+start
+20
+Your I have handeled
+20
+20
+End */                     
+
+> Instead of writing multiple catch block we can use only one catch block.
+> When we are using multiple catch block,we have to handle all types of possible exception that might occur in my program.
+> To overcome this if we take only catch block,this catch block should have cpability to handle any kind of exception.
+> For that in the cath block we will take "Exception class "reference variable because it can store any kind of exception(checked and unchecked) by providing "generalization".
+
+eg:
+public class handled2 {
+    public static void main(String[] args) {
+        System.out.println("start");
+        int a[]={1,8,2,4,5,7};
+        String s1=null;
+        try {
+            System.out.println(10+5);
+            System.out.println(10-5);
+            System.out.println(a[8]);
+            System.out.println(s1.toUpperCase());
+            System.out.println(30/0);
+        } catch (Exception e) {
+            System.out.println("Exception handeled");
+        }
+    }
+}
+/*output
+PS C:\Users\Bharath.S\Desktop\Java Projects\Exception-Handling> java handled2.java
+start
+15
+5
+Exception handeled
+*/ 
+
+>try block:
+     > A try block in java is a container used to enclose code that might throw an exception.
+     > We can not right try block alone,there should be at least one catch block or finally block with try block.
+     > we can write one try block with multiple catch block.
+
+>catch block:
+     > catch block is used to handle the exception by storing the Throwable type object,that is created in try block.
+     > we can't write only catch block without try block.
+       Syntax:
+            try{
+                //abnormal statement
+            }
+            catch(Exceptionhandlingclass ref){
+                //exception handling code
+            }
+
+      > in catch block order maintainig is very important.
+        example:
+              public class order {
+    public static void main(String[] args) {
+        try {
+            System.out.println(10/0);
+        } catch (Exception e) {
+            System.out.println("Exception handeled");
+        } catch (ArithmeticException e) {
+            System.out.println("Arithmetic Exception handeled");
+        }
+    }
+}
+output:
+PS C:\Users\Bharath.S\Desktop\Java Projects\Exception-Handling> java order.java
+order.java:6: error: exception ArithmeticException has already been caught  
+        } catch (ArithmeticException e) {
+          ^1 error
+
+note:
+  the above example is possible but if we do opposite that is not possible.
+                    Throwable
+                        |
+                    Exception
+                        |
+                    RuntimeException
+                        |
+                    ArithmeticException
+finally block:
+       > finally block is used in Exception handling with try block or with try and catch block.
+       > This block will execute everytime regardless of exception is there or not.
+       > we can write only try block with finally block.
+
+throws:    
+         >In java throws is a keyword that is used to declare an exception in the method signature.
+         > It is used to indicate that a method may throw an exception during its execution.
+         >It informing the compiler and the caller of the method that they need to handle or declare the exception.
+         >Syntax:
+            return_type method_name(parameters) throws exception_type1, exception_type2, ... {
+                // method body
+            } 
+<!-- Exception Propagation: -->
+           > Transfering the Exception Handling from one method to the caller method is called as 'Exception Propagation.
+           > For checked Exception,propagation cn be done explicitely by using 'throws' keyword.
+           > If it is unchecked Exception,propagation will happen implicitely.
+             we need not to use "throws" keyword.
+        eg:
+        class Example5 {
+
+    public static void main(String[] args) throws Exception {
+
+        for (int i = 1; i < 10; i++) {
+            System.out.println(i);
+            Thread.sleep(1000);
+        }
+
+        m1();
+    }
+
+    public static void m1() throws Exception { 
+        m2();
+    }
+
+    public static void m2() throws Exception {
+        m3();
+    }
+
+    public static void m3() throws Exception {
+        m1();
+    }
+}
+
+What is Throwable class:
+       > The java.lang.Throwable class is the root superclass of all errors and exceptions in the java language.
+       *methods* => toString().getMessage(),printStackTrace();
+throw keyword:
+       > The "throw" keyword is used to explicitly throw an exception from a method or any block of code.
+       > Mainly it is used for throwing *custom exception* 
+
+       Syntax:
+          
+            throw object of Exception type("message")
+
+            example:
+            
+import java.util.Scanner;
+
+class Learningthrow {
+    static Scanner sc=new Scanner(System.in); 
+        public static void main(String[] args) 
+        {
+
+            System.out.println("start");
+            System.out.print("enter your age :");
+            int age=sc.nextInt();
+u
+            if(age>=21){
+                System.out.println("Your eligilbe bike ride");
+
+            }
+            else{
+                throw new IllegalArgumentException("your not eligible for bike ride");
+            }
+       
+    }
+}
+
+
+Custom Exception:
+        > A Custom Exception (also called a user-defined exception) in java is a specific exception class created by a programer to handle error scenarios based on theri application.
+        > Custom exception we can create both checked exception and unchecked exception.
+How to create Checked custom exception:
+     > We have to create one class and that class should inherit from "Exception Class"
+
+     Syntax:
+         
+         class classname extends Exception{
+            classname(String msg)
+            {
+                super(msg);
+            }
+         }
+
+Unchecked custom Exception:
+ > First we have to create our own class,this class should inherit "Runtime Exception" class
+
+ Syntax:
+    class classname extends RuntimeException
+    {
+        classname(String msg){
+            super(msg);
+        }
+    }
+
+Differnce between final,finally and finalize:
+
+final:
+1.It is keyword,modifier
+2.we can apply it to variable,class,methods.
+3.It is used to make constant.
+4.final variable we can't change the value,final class we can't inherit,we can't overide.
+
+finally:
+1.It is one block.
+2.It is written with try or try and catch block.
+3.It will execute everytime irrespctive of exception.
+
+finalize:
+1.finalize is one method.
+2.It is present in Object class.
+3.It is used for cleanup(to remove the object from the heap area who dose not have any reference).
+4.It is called by "System.gc()" method.

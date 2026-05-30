@@ -1,0 +1,98 @@
+Wrapper class:
+
+       > Java is not fully object oriented language,because we are using the primitive datatypes.
+       > A wrraper class in java is a class that wraps a primitive data type inside in a object.
+       > For each 8 primitive data types java has corresponding 8 wrapper class.
+       > All the wrapper classes are defined in java.lang package and they are final class.
+
+                            -----------------------------------------------------
+                           | Primitive datatype   |             wrapper class   |
+                           ------------------------------------------------------
+                           | byte                 |               Byte          |
+                           | short                |               Short         |
+                           | int                  |               Integer       |
+                           | long                 |               Long          |
+                           | float                |               Float         |
+                           | double               |               Double        |
+
+                           | char                 |               Character     |
+                           | boolean              |               Boolean       |
+                           ------------------------------------------------------
+
+  
+         > The wrapper class provides a way to use primitive data types as objects.
+         > The wrapper class provides several methods to convert between the primitive data type and the wrapper class.
+         > The wrapper class also provides several methods to perform operations on the primitive data type.
+
+What is Boxing?
+     > Boxing is the process of converting a primitive data type to a wrapper class object.
+     > For example, if we have an int variable and we want to convert it to an Integer object, we can use the Integer.valueOf() method. 
+      Syntax:
+
+         wrapperClass wrapperObject = wrapperClass.valueOf(primitiveDataType);
+
+         Example program:
+            public class WrapperExample {
+                public static void main(String[] args) {
+                    int primitiveInt = 10;
+                    Integer wrapperInt = Integer.valueOf(primitiveInt);
+                    System.out.println("Primitive int: " + primitiveInt);
+                    System.out.println("Wrapper Integer: " + wrapperInt);
+                    System.out.println( primitiveInt.toString() ); // This will give error because primitive data type does not have any method.
+                }
+            }
+            output:
+            Primitive int: 10   
+            Wrapper Integer: 10
+
+What is Unboxing?
+            > Unboxing is the process of converting a wrapper class object to a primitive data type.
+            > For example, if we have an Integer object and we want to convert it to an int variable, we can use the intValue() method of the Integer class.
+             Syntax:
+
+                primitiveDataType primitiveVariable = wrapperObject.primitiveDataTypeValue();
+
+                Example program:
+                    public class WrapperExample {
+                        public static void main(String[] args) {
+                            Integer wrapperInt = Integer.valueOf(10);
+                            int primitiveInt = wrapperInt.intValue();
+                            System.out.println("Wrapper Integer: " + wrapperInt);
+                            System.out.println("Primitive int: " + primitiveInt);
+                        }
+                    }
+                    output:
+                    Wrapper Integer: 10
+                    Primitive int: 10
+
+Auto Boxing:
+       > Auto boxing is the process of automatically converting a primitive data type to a wrapper class object.
+       > For example, if we have an int variable and we want to convert it to an Integer object, we can simply assign the int variable to an Integer variable and the compiler will automatically convert it to an Integer object.
+        Example program:
+            public class WrapperExample {
+                public static void main(String[] args) {
+                    int primitiveInt = 10;
+                    Integer wrapperInt = primitiveInt; // Auto boxing
+                    System.out.println("Primitive int: " + primitiveInt);
+                    System.out.println("Wrapper Integer: " + wrapperInt);
+                }
+            }
+            output:
+            Primitive int: 10
+            Wrapper Integer: 10
+Auto Unboxing:
+       > Auto unboxing is the process of automatically converting a wrapper class object to a primitive data type.
+       > For example, if we have an Integer object and we want to convert it to an int variable, we can simply assign the Integer variable to an int variable and the compiler will automatically convert it to an int variable.
+        Example program:
+            public class WrapperExample {
+                public static void main(String[] args) {
+                    Integer wrapperInt = Integer.valueOf(10);
+                    int primitiveInt = wrapperInt; // Auto unboxing
+                    System.out.println("Wrapper Integer: " + wrapperInt);
+                    System.out.println("Primitive int: " + primitiveInt);
+                }
+            }
+            output:
+            Wrapper Integer: 10
+            Primitive int: 10   
+            
